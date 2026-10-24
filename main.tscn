@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://dq0x86a8vkphx"]
+
+[ext_resource type="Script" uid="uid://ctghxvgohf1nc" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://q0mgvmwh3csg" path="res://swipe_detector.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://bi2ihu34datv" path="res://assets/card_bg.png" id="3_h2yge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(200, 320)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
+size = Vector2(100, 80)
+
+[node name="Main" type="Node2D" unique_id=1526354758]
+script = ExtResource("1_0xm2m")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=853079325]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.5745726, 0.12915075, 0.20981103, 1)
+
+[node name="SwipeDetector" type="Camera2D" parent="." unique_id=1603940591]
+position = Vector2(576, 324)
+script = ExtResource("1_ig7tw")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1660325354]
+
+[node name="CardArea" type="Area2D" parent="." unique_id=2063289918]
+position = Vector2(450, 200)
+
+[node name="Proposal" type="NinePatchRect" parent="CardArea" unique_id=533091060]
+custom_minimum_size = Vector2(200, 320)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 300.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_h2yge")
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardArea" unique_id=697189902]
+position = Vector2(150, 190)
+shape = SubResource("RectangleShape2D_0xm2m")
+debug_color = Color(0.782225, 0.41466042, 0.3695139, 0.41960785)
+
+[node name="MarginContainer" type="MarginContainer" parent="CardArea" unique_id=153571989]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CardArea/MarginContainer" unique_id=215730300]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CardArea/MarginContainer/VBoxContainer" unique_id=1794048263]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Control" type="Control" parent="CardArea/MarginContainer/VBoxContainer" unique_id=2066512938]
+custom_minimum_size = Vector2(250, 25)
+layout_mode = 2
+
+[node name="Description" type="Label" parent="CardArea/MarginContainer/VBoxContainer" unique_id=306561657]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+autowrap_mode = 2
+
+[node name="DetectionLeft" type="Area2D" parent="." unique_id=40535472]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionLeft" unique_id=522842924]
+position = Vector2(200, 350)
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="DetectionRight" type="Area2D" parent="." unique_id=255107693]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DetectionRight" unique_id=552881021]
+position = Vector2(1000, 350)
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[connection signal="card_accepted" from="." to="." method="_on_card_accepted"]
+[connection signal="card_rejected" from="." to="." method="_on_card_rejected"]
+[connection signal="area_entered" from="DetectionLeft" to="." method="_on_detection_left_area_entered"]
+[connection signal="area_exited" from="DetectionLeft" to="." method="_on_detection_left_area_exited"]
+[connection signal="area_entered" from="DetectionRight" to="." method="_on_detection_right_area_entered"]
+[connection signal="area_exited" from="DetectionRight" to="." method="_on_detection_right_area_exited"]
