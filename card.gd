@@ -10,12 +10,7 @@ class_name Card extends Node
 var id : int = 0
 var title : String = "{}"
 var description : String = "{}"
-var modifiers : Dictionary = {
-	wealth = 0.0,
-	happiness = 0.0,
-	education = 0.0,
-	solidarity = 0.0
-	}
+var modifiers : Dictionary = {gdp_per_capita = 0, social_support = 0, healthy_life_exp = 0, life_choice_freedom = 0, generosity = 0, corruption = 0}
 enum Status {rejected = -1, undecided = 0, accepted = 1}
 var card_status : int = Status.undecided
 

@@ -23,9 +23,10 @@ position = Vector2(576, 324)
 script = ExtResource("1_ig7tw")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1660325354]
+visible = false
 
 [node name="CardArea" type="Area2D" parent="." unique_id=2063289918]
-position = Vector2(450, 200)
+position = Vector2(450, 100)
 
 [node name="Proposal" type="NinePatchRect" parent="CardArea" unique_id=533091060]
 custom_minimum_size = Vector2(200, 320)
@@ -90,9 +91,163 @@ shape = SubResource("RectangleShape2D_ig7tw")
 position = Vector2(1000, 350)
 shape = SubResource("RectangleShape2D_ig7tw")
 
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=820087045]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1774816158]
+custom_minimum_size = Vector2(1152, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PauseBtn" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1993633108]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Pause"
+
+[node name="LawVotedLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=888527447]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+horizontal_alignment = 1
+
+[node name="LawRejectedLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1193726292]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+horizontal_alignment = 1
+
+[node name="LawAcceptedLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1571501581]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+horizontal_alignment = 1
+
+[node name="LawWeeklyVotedLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1384134370]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+horizontal_alignment = 1
+
+[node name="LawWeeklyRejectedLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1854104168]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+horizontal_alignment = 1
+
+[node name="LawWeeklyAcceptedLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=783508557]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+horizontal_alignment = 1
+
+[node name="FeedbackLabel" type="Label" parent="VBoxContainer" unique_id=1872753704]
+layout_mode = 2
+
+[node name="MenuContainer" type="MarginContainer" parent="." unique_id=2134562348]
+custom_minimum_size = Vector2(350, 648)
+offset_left = 450.0
+offset_right = 800.0
+offset_bottom = 648.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer" unique_id=1715926603]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="NewGameBtn" type="Button" parent="MenuContainer/VBoxContainer" unique_id=1088235736]
+layout_mode = 2
+text = "New Game / Nouveau Jeu"
+
+[node name="ContinueBtn" type="Button" parent="MenuContainer/VBoxContainer" unique_id=641109400]
+layout_mode = 2
+text = "Continue(r)"
+
+[node name="ExitBtn" type="Button" parent="MenuContainer/VBoxContainer" unique_id=1489208215]
+layout_mode = 2
+text = "Quitter"
+
+[node name="SocietyValuesContainer" type="VBoxContainer" parent="." unique_id=74300875]
+offset_top = 400.0
+offset_right = 250.0
+offset_bottom = 634.0
+
+[node name="PopEvalLabel" type="Label" parent="SocietyValuesContainer" unique_id=1666503694]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+horizontal_alignment = 1
+
+[node name="GDPLabel" type="Label" parent="SocietyValuesContainer" unique_id=1331192350]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+horizontal_alignment = 1
+
+[node name="SocialSuppLabel" type="Label" parent="SocietyValuesContainer" unique_id=1828030968]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+horizontal_alignment = 1
+
+[node name="HealthyLifeLabel" type="Label" parent="SocietyValuesContainer" unique_id=1063622476]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+horizontal_alignment = 1
+
+[node name="LifeChoiceLabel" type="Label" parent="SocietyValuesContainer" unique_id=1726898366]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+horizontal_alignment = 1
+
+[node name="GenerosityLabel" type="Label" parent="SocietyValuesContainer" unique_id=676161580]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+horizontal_alignment = 1
+
+[node name="PercCorruptionLabel" type="Label" parent="SocietyValuesContainer" unique_id=1569876709]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+horizontal_alignment = 1
+
 [connection signal="card_accepted" from="." to="." method="_on_card_accepted"]
 [connection signal="card_rejected" from="." to="." method="_on_card_rejected"]
+[connection signal="week_finished" from="." to="." method="_on_week_finished"]
 [connection signal="area_entered" from="DetectionLeft" to="." method="_on_detection_left_area_entered"]
 [connection signal="area_exited" from="DetectionLeft" to="." method="_on_detection_left_area_exited"]
 [connection signal="area_entered" from="DetectionRight" to="." method="_on_detection_right_area_entered"]
 [connection signal="area_exited" from="DetectionRight" to="." method="_on_detection_right_area_exited"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PauseBtn" to="." method="_on_pause_btn_pressed"]
+[connection signal="pressed" from="MenuContainer/VBoxContainer/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
+[connection signal="pressed" from="MenuContainer/VBoxContainer/ContinueBtn" to="." method="_on_pause_btn_pressed"]
+[connection signal="pressed" from="MenuContainer/VBoxContainer/ExitBtn" to="." method="_on_exit_btn_pressed"]
