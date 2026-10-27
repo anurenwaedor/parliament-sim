@@ -64,6 +64,12 @@ var society : Dictionary = {
 	corruption_perception = 0
 }
 
+var society2 : Dictionary = {
+	yearly = {state_budget_increase = 0},
+	state_budget = 0,
+	population = {children = 100, young_adult = 400, adults = 500, old_people = 300}
+}
+
 var world : Dictionary = {
 	
 }
