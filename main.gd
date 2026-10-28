@@ -44,6 +44,7 @@ var laws_rejected : Array[Card]
 @onready var generosity_label: Label = $SocietyValuesContainer/GenerosityLabel
 @onready var perc_corruption_label: Label = $SocietyValuesContainer/PercCorruptionLabel
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var feedback_label: Label = $VBoxContainer/FeedbackLabel
 
@@ -122,14 +123,16 @@ func start_week() -> bool:
 	return false
 
 func _on_detection_left_area_entered(_area: Area2D) -> void:
-	print("Left area entered - no")
-	left_area_entered = true
-	update_feedback("Release to Reject")
+	if card_area.visible:
+		print("Left area entered - no")
+		left_area_entered = true
+		update_feedback("Release to Reject")
 
 func _on_detection_right_area_entered(_area: Area2D) -> void:
-	print("Right area entered - YES")
-	right_area_entered = true
-	update_feedback("Release to Accept")
+	if card_area.visible:
+		print("Right area entered - YES")
+		right_area_entered = true
+		update_feedback("Release to Accept")
 
 func _on_detection_left_area_exited(_area: Area2D) -> void:
 	print("Left area exited - cancel no")
@@ -145,13 +148,14 @@ func _on_card_accepted() -> void:
 	print("Proposition accepted= ", current_card.title)
 	laws_accepted.append(current_card)
 	update_progression()
-	pick_new_proposal()
+
+	animation_player.play("card_fadeout")
 
 func _on_card_rejected() -> void:
 	print("Proposition rejected= ", current_card.title)
 	laws_rejected.append(current_card)
 	update_progression()
-	pick_new_proposal()
+	animation_player.play("card_fadeout")
 
 # game level
 func reset_game_values() -> void:
@@ -244,3 +248,9 @@ func _on_week_finished() -> void:
 	update_society_label()
 	reset_weekly_game_values()
 	pick_new_proposal()
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "card_fadeout":
+		pick_new_proposal()
+		animation_player.play("card_fadein")
