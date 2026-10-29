@@ -107,6 +107,8 @@ func start_new_game() -> void:
 	updated_law_labels()
 	# pick a card
 	pick_new_proposal()
+	animation_player.play("card_fadein")
+
 	
 	# repeat until game lost/exit
 		# var result = start_week()

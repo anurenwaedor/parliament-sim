@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://ctghxvgohf1nc" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://q0mgvmwh3csg" path="res://swipe_detector.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://de4io053dsbe5" path="res://assets/visual_bg.png" id="2_lquwl"]
 [ext_resource type="Texture2D" uid="uid://bi2ihu34datv" path="res://assets/card_bg.png" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://k1hysjpde2qx" path="res://assets/card_bg2.png" id="4_1bvp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(200, 320)
@@ -36,10 +38,34 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardArea/CardBackground:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardArea/CardBackground:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_h2yge"]
 resource_name = "card_fadein"
-length = 1.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -47,7 +73,7 @@ tracks/0/path = NodePath("CardArea/Proposal:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
@@ -63,6 +89,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardArea/CardBackground:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardArea/CardBackground:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(-1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_1bvp3"]
@@ -107,6 +157,21 @@ script = ExtResource("1_0xm2m")
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.5745726, 0.12915075, 0.20981103, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect" unique_id=1732667348]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lquwl")
 
 [node name="SwipeDetector" type="Camera2D" parent="." unique_id=1603940591]
 position = Vector2(576, 324)
@@ -168,6 +233,14 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 autowrap_mode = 2
+
+[node name="CardBackground" type="TextureRect" parent="CardArea" unique_id=1482665633]
+custom_minimum_size = Vector2(300, 380)
+offset_right = 300.0
+offset_bottom = 380.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_1bvp3")
 
 [node name="DetectionLeft" type="Area2D" parent="." unique_id=40535472]
 
