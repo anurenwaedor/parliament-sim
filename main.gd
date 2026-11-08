@@ -22,7 +22,7 @@ var nb_law_rejected : int = 0
 var nb_weekly_law_voted : int = 0
 var nb_weekly_law_accepted : int = 0
 var nb_weekly_law_rejected : int = 0
-
+var week_number : int = 0
 var nb_votes_per_week : int = 5
 
 var laws_accepted : Array[Card]
@@ -103,6 +103,7 @@ func start_new_game() -> void:
 	
 	reset_game_values()
 	reset_weekly_game_values()
+	week_number = 0
 	# updated top bar gui
 	updated_law_labels()
 	# pick a card
@@ -208,11 +209,12 @@ func update_society_label()-> void:
 	perc_corruption_label.text = "P. Corruption = " + str(society.corruption_perception)
 
 func pick_new_proposal() -> void:
-	if nb_weekly_law_voted < nb_votes_per_week:
-		current_card = CardData.all_cards.pick_random()
-		update_visible_card()
-	else:
-		week_finished.emit()
+	current_card = CardData.all_cards.pick_random()
+	update_visible_card()
+	#if nb_weekly_law_voted < nb_votes_per_week:
+		#pass
+	#else:
+		#week_finished.emit()
 
 func update_visible_card() -> void:
 	visible_title.text = "#" + str(current_card.id) + " " + current_card.title
@@ -244,10 +246,9 @@ func _on_week_finished() -> void:
 		society.life_choice_freedom += a.modifiers['life_choice_freedom']
 		society.generosity += a.modifiers['generosity']
 		society.corruption_perception += a.modifiers['corruption']
-	
+	update_society_label()	
 	# generate report for checking
 	
-	update_society_label()
 	reset_weekly_game_values()
 	pick_new_proposal()
 
